@@ -1,11 +1,15 @@
 <?php
-
+// RenterList route now uses a Blade view that mounts the Livewire component.
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+
+
+Route::view('/rooms', 'rooms')->name('rooms.index');
+
 
 Route::get('/', function () {
     return view('welcome');
