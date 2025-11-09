@@ -13,6 +13,8 @@ class RenterList extends Component
     public $searchQuery = '';
     public $filterType = 'all'; // 'all', 'shared', 'private'
     public $favorites = []; // Track favorite rooms
+    public $showModal = false;
+    public $selectedRoom = null;
     private $roomImages = ['pic1.jpeg', 'pic2.jpeg', 'pic3.jpeg', 'pic4.jpeg'];
 
     public function updatedSearchQuery()
@@ -32,6 +34,18 @@ class RenterList extends Component
         } else {
             $this->favorites[] = $roomId;
         }
+    }
+
+    public function viewDetails($roomId)
+    {
+        $this->selectedRoom = Room::with('renter')->find($roomId);
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+        $this->selectedRoom = null;
     }
 
     public function getFilterLabel()
