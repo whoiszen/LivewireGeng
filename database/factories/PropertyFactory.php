@@ -10,10 +10,11 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomOrder()->first()->user_id ?? User::factory(),
+            'user_id' => User::inRandomOrder()->first()->id ?? User::factory(),
             'firstname' => $this->faker->firstName,
             'lastname' => $this->faker->lastName,
             'address' => $this->faker->address,
+            'property_name' => $this->faker->company . ' Property',
             'created_at' => now(),
         ];
     }
